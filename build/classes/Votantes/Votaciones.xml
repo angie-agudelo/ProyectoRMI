@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<?xml-stylesheet type="text/xsl" href="StyleVotaciones.xsl" ?>
+<listavotantes>
+    <votante>
+        <departamento region="Andina"> Cundinamarca </departamento>
+        <inscritos> 600 </inscritos>
+        <partido1> 100 </partido1>
+        <partido2> 120 </partido2>
+        <partido3> 180 </partido3>
+        <blanco> 200 </blanco>
+    </votante>
+    <votante>
+        <departamento region="Andina, Caribe"> Antioquia </departamento>
+        <inscritos> 900 </inscritos>
+        <partido1> 300 </partido1>
+        <partido2> 110 </partido2>
+        <partido3> 120 </partido3>
+        <blanco> 180 </blanco>blanco
+    </votante>
+    <votante>
+        <departamento region="Andina,Pacífica,Insular"> Valle </departamento>
+        <inscritos> 890 </inscritos>
+        <partido1> 130 </partido1>
+        <partido2> 200 </partido2>
+        <partido3> 380 </partido3>
+        <blanco> 130 </blanco>
+    </votante>
+    <votante>
+        <departamento region="Orinoquía"> Arauca </departamento>
+        <inscritos> 690 </inscritos>
+        <partido1> 140 </partido1>
+        <partido2> 108 </partido2>
+        <partido3> 130 </partido3>
+        <blanco> 120 </blanco>
+    </votante>
+    <votante>
+        <departamento region="Caribe"> Atlantico </departamento>
+        <inscritos> 790 </inscritos>
+        <partido1> 110 </partido1>
+        <partido2> 112 </partido2>
+        <partido3> 180 </partido3>
+        <blanco> 105 </blanco>
+    </votante>
+</listavotantes>
