@@ -8,7 +8,7 @@
         Purpose of transformation follows.
 -->
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
     <xsl:output method="html"/>
 
     <!-- TODO customize transformation rules 
@@ -59,14 +59,78 @@
                                     <xsl:value-of select="blanco"/>
                                 </td>
                                 <td>  
-                                    <xsl:variable name="totalVotos" select="inscritos - (partido1 + partido2+ partido3)"/>     
-                                    <!--<xsl:variable name="totalVotos" select="sum(inscritos|partido1|partido2|partido3)"/>-->               
+                                    <xsl:variable name="totalVotos" select="inscritos - (partido1 + partido2+ partido3)"/>                 
                                     <xsl:value-of select="$totalVotos"/>
-                                    <!--<xsl:variable name="totalAbstencion" select="sum($totalAbstencion|partido1|partido2|partido3)"/>     
-                                    <xsl:with-param name="totalAbstencion" select="sum($totalAbstencion|partido1|partido2|partido3)"></xsl:with-param>  
-                                    <xsl:value-of select="$totalAbstencion"/>-->
                                 </td>
                             </tr>
+                        </xsl:for-each>
+                        <tr>
+                            <td colspan="2">
+                                Total
+                            </td>
+                            <td >
+                                <xsl:value-of select="sum(listavotantes/votante/partido1)"/>
+                            </td>
+                            <td >
+                                <xsl:value-of select="sum(listavotantes/votante/partido2)"/>
+                            </td>
+                            <td >
+                                <xsl:value-of select="sum(listavotantes/votante/partido3)"/>
+                            </td>
+                            <td >
+                                <xsl:value-of select="sum(listavotantes/votante/blanco)"/>
+                            </td>
+                            <td>
+                              
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+                <br/>                
+                <div>
+                    <h1>3. Votantes en en la región Caribe </h1>
+                </div>  
+                <table border="1">     
+                    <thead>
+                        <tr>
+                            <th>Departamentos</th>         
+                            <th>Inscritos</th>
+                            <th>Partido 1</th>  
+                            <th>Partido 2</th>
+                            <th>Partido 3</th>
+                            <th>Blanco</th>                    
+                            <th>Abstención</th>                    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <xsl:for-each select="listavotantes/votante">
+                            <xsl:variable name="regdep" select="departamento/@region"> </xsl:variable> 
+                            <xsl:if test="contains($regdep,'Caribe')"> 
+                                <tr>
+                                    <td>
+                                        <xsl:value-of select="departamento"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="inscritos"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="partido1"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="partido2"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="partido3"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="blanco"/>
+                                    </td>
+                                    <td>  
+                                        <xsl:variable name="totalVotos" select="inscritos - (partido1 + partido2+ partido3)"/>                  
+                                        <xsl:value-of select="$totalVotos"/>
+                                    </td>
+                                </tr>
+                            </xsl:if>
                         </xsl:for-each>
                         <tr>
                             <td colspan="2">
@@ -90,10 +154,7 @@
                         </tr>
                     </tbody>
                 </table> 
-                <br/>                
-                <div>
-                    <h1>3. Votantes en en la región Caribe </h1>
-                </div>                
+                <br/>                 
                 <form >
                     <label for="regiones">Región: </label>
                     <select name="regiones" id="regiones">
