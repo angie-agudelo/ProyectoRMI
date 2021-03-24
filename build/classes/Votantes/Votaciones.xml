@@ -16,7 +16,7 @@ and open the template in the editor.
         <blanco> 200 </blanco>
     </votante>
     <votante>
-        <departamento region="Andina, Caribe"> Antioquia </departamento>
+        <departamento region="Andina"> Antioquia </departamento>
         <inscritos> 900 </inscritos>
         <partido1> 300 </partido1>
         <partido2> 110 </partido2>
@@ -24,7 +24,7 @@ and open the template in the editor.
         <blanco> 180 </blanco>blanco
     </votante>
     <votante>
-        <departamento region="Andina,Pacífica,Insular"> Valle </departamento>
+        <departamento region="Pacífica"> Valle </departamento>
         <inscritos> 890 </inscritos>
         <partido1> 130 </partido1>
         <partido2> 200 </partido2>

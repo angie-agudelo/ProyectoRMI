@@ -8,7 +8,7 @@
         Purpose of transformation follows.
 -->
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
     <xsl:output method="html"/>
 
     <!-- TODO customize transformation rules 
@@ -59,9 +59,13 @@
                                     <xsl:value-of select="blanco"/>
                                 </td>
                                 <td>  
-                                    <xsl:variable name="totalVotos" select="inscritos - (partido1 + partido2+ partido3)"/>                 
-                                    <xsl:value-of select="$totalVotos"/>
-                                </td>
+                                    <!--<xsl:variable name="totalVotos" select="((partido1 + partido2+ partido3) * 100) / inscritos"/>-->            
+                                    <xsl:variable name="totalNoVotos" select="inscritos - (partido1 + partido2+ partido3)"/>                         
+                                    <xsl:variable name="totalVotos" select="($totalNoVotos * 100) div inscritos"/>                           
+                                    <xsl:value-of select="$totalVotos"/>                             
+                                    <!--<xsl:value-of select="num($totalVotos)"/>-->
+                                    <!--<xsl:value-of select="format-number($totalVotos, '##0,## %;-##0,## %','european')"/>-->
+                                </td>                                
                             </tr>
                         </xsl:for-each>
                         <tr>
@@ -125,39 +129,25 @@
                                     <td>
                                         <xsl:value-of select="blanco"/>
                                     </td>
-                                    <td>  
-                                        <xsl:variable name="totalVotos" select="inscritos - (partido1 + partido2+ partido3)"/>                  
-                                        <xsl:value-of select="$totalVotos"/>
+                                    <td>          
+                                        <xsl:variable name="totalNoVotos" select="inscritos - (partido1 + partido2+ partido3)"/>                         
+                                        <xsl:variable name="totalVotos" select="($totalNoVotos * 100) div inscritos"/>                           
+                                        <xsl:value-of select="$totalVotos"/>                             
                                     </td>
                                 </tr>
                             </xsl:if>
                         </xsl:for-each>
-                        <tr>
-                            <td colspan="2">
-                                Total
-                            </td>
-                            <td >
-                                <xsl:value-of select="sum(listavotantes/votante/partido1)"/>
-                            </td>
-                            <td >
-                                <xsl:value-of select="sum(listavotantes/votante/partido2)"/>
-                            </td>
-                            <td >
-                                <xsl:value-of select="sum(listavotantes/votante/partido3)"/>
-                            </td>
-                            <td >
-                                <xsl:value-of select="sum(listavotantes/votante/blanco)"/>
-                            </td>
-                            <td>
-                                <xsl:value-of select="$totalAbstencion"/>
-                            </td>
-                        </tr>
                     </tbody>
                 </table> 
                 <br/>                 
                 <form >
                     <label for="regiones">Región: </label>
                     <select name="regiones" id="regiones">
+                        <xsl:for-each-group select="listavotantes/votante" group-by="@region">
+                            <option>
+                                <xsl:value-of select="."/>
+                            </option>
+                        </xsl:for-each-group>
                         <xsl:for-each select="listavotantes/votante">                   
                             <xsl:variable name="regionesdep" select="departamento/@region"> </xsl:variable>     
                             <option>
@@ -181,12 +171,8 @@
                         </xsl:for-each>
                         <!--                        https://stackoverflow.com/questions/50224452/error-unsupported-xsl-element-http-www-w3-org-1999-xsl-transformfor-each-g
                         -->                       
-                       
-                        <!--                            <xsl:for-each-group select="listavotantes/votante" group-by="@region">
-                            <option>
-                                <xsl:value-of select="."/>
-                            </option>
-                        </xsl:for-each-group>-->
+                        <!--                       
+                        -->                                          
                     </select>
                     <input type="submit" value="Filtrar" />
                 </form>
