@@ -22,6 +22,13 @@
                 <script language="javascript" type="text/javascript">
                    <![CDATA[
                       $(document).ready(function() {
+                      debugger;
+                        $('#regiones option').each(function() {
+                        var valtext = this.text;
+                            if($('#regiones option[value="'+valtext+'"]').length > 1){                        
+                                $(this).remove();
+                            }
+                        });
                             $('#regiones').on('change', function() { 
                                 var valorSelect = this.value;       
                                 $("#tblRegion tr").filter(function() {
@@ -51,11 +58,11 @@
                             <div class="card-body">
                                 <label for="regiones">Región: </label>
                                 <select name="regiones" id="regiones">     
-                                     <option value=""> Seleccione..
-                                        </option>                   
+                                    <option value=""> Seleccione..
+                                    </option>                   
                                     <xsl:for-each select="listavotantes/votante">                   
                                         <xsl:variable name="regionesdep" select="departamento/@region"> </xsl:variable>     
-                                        <option>
+                                        <option value="{$regionesdep}">
                                             <xsl:value-of select="$regionesdep"/>
                                         </option>                                                                                                                    
                                     </xsl:for-each>                                                          
