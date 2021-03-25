@@ -17,184 +17,150 @@
         <html>
             <head>
                 <title>StyleVotaciones.xsl</title>
-                <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css"/>
-                <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
+                <script type="javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js"></script>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+                <script language="javascript" type="text/javascript">
+                   <![CDATA[
+                      $(document).ready(function() {
+                            $('#regiones').on('change', function() { 
+                                var valorSelect = this.value;       
+                                $("#tblRegion tr").filter(function() {
+                                    $(this).toggle($(this).text().toLowerCase().indexOf(valorSelect.toLowerCase()) > -1)
+                               });
+                             });
+                        });
+                    ]]>
+                </script>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
             </head>
             <body>
-                <div class="collapsible">
-                    <div>
-                        <h1>1 y 2 Información sobre las votaciones de gobernadores </h1>
-                    </div>
-                    <!--<xsl:variable name="totalAbstencion" select="0"/>-->
-                    <xsl:param name="totalAbstencion">0</xsl:param> 
-                    <table border="1" class="mdl-data-table mdl-js-data-table">     
-                        <thead>
-                            <tr>
-                                <th>Departamentos</th>         
-                                <th>Inscritos</th>
-                                <th>Partido 1</th>  
-                                <th>Partido 2</th>
-                                <th>Partido 3</th>
-                                <th>Blanco</th>                    
-                                <th>Abstención</th>                    
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <xsl:for-each select="listavotantes/votante">
-                                <tr>
-                                    <td>
-                                        <xsl:value-of select="departamento"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="inscritos"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="partido1"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="partido2"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="partido3"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="blanco"/>
-                                    </td>
-                                    <td>  
-                                        <!--<xsl:variable name="totalVotos" select="((partido1 + partido2+ partido3) * 100) / inscritos"/>-->            
-                                        <xsl:variable name="totalNoVotos" select="inscritos - (partido1 + partido2+ partido3)"/>                         
-                                        <xsl:variable name="totalVotos" select="($totalNoVotos * 100) div inscritos"/>                           
-                                        <xsl:value-of select="$totalVotos"/>                             
-                                        <!--<xsl:value-of select="num($totalVotos)"/>-->
-                                        <!--<xsl:value-of select="format-number($totalVotos, '##0,## %;-##0,## %','european')"/>-->
-                                    </td>                                
-                                </tr>
-                            </xsl:for-each>
-                            <tr>
-                                <td colspan="2">
-                                    Total
-                                </td>
-                                <td >
-                                    <xsl:value-of select="sum(listavotantes/votante/partido1)"/>
-                                </td>
-                                <td >
-                                    <xsl:value-of select="sum(listavotantes/votante/partido2)"/>
-                                </td>
-                                <td >
-                                    <xsl:value-of select="sum(listavotantes/votante/partido3)"/>
-                                </td>
-                                <td >
-                                    <xsl:value-of select="sum(listavotantes/votante/blanco)"/>
-                                </td>
-                                <td>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Información sobre las votaciones de gobernadores
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <label for="regiones">Región: </label>
+                                <select name="regiones" id="regiones">     
+                                     <option value=""> Seleccione..
+                                        </option>                   
+                                    <xsl:for-each select="listavotantes/votante">                   
+                                        <xsl:variable name="regionesdep" select="departamento/@region"> </xsl:variable>     
+                                        <option>
+                                            <xsl:value-of select="$regionesdep"/>
+                                        </option>                                                                                                                    
+                                    </xsl:for-each>                                                          
+                                </select>
+                                <xsl:param name="totalAbstencion">0</xsl:param>                           
+                                <table class="table table-hover" id="tblRegion">  
+                                    <thead>
+                                        <tr>
+                                            <th>Departamentos</th>         
+                                            <th>Inscritos</th>
+                                            <th>Partido 1</th>  
+                                            <th>Partido 2</th>
+                                            <th>Partido 3</th>
+                                            <th>Blanco</th>                    
+                                            <th>Abstención</th>                    
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <xsl:for-each select="listavotantes/votante">
+                                            <xsl:variable name="regdep" select="departamento/@region"> </xsl:variable> 
+                                            <!--<xsl:if test="contains($regdep,'Caribe')">--> 
+                                            <tr>
+                                                <td style="display:none;">
+                                                    <xsl:value-of select="$regdep"/>
+                                                </td>
+                                                <td>
+                                                    <xsl:value-of select="departamento"/>
+                                                </td>
+                                                <td>
+                                                    <xsl:value-of select="inscritos"/>
+                                                </td>
+                                                <td>
+                                                    <xsl:value-of select="partido1"/>
+                                                </td>
+                                                <td>
+                                                    <xsl:value-of select="partido2"/>
+                                                </td>
+                                                <td>
+                                                    <xsl:value-of select="partido3"/>
+                                                </td>
+                                                <td>
+                                                    <xsl:value-of select="blanco"/>
+                                                </td>
+                                                <td>  
+                                                    <!--<xsl:variable name="totalVotos" select="((partido1 + partido2+ partido3) * 100) / inscritos"/>-->            
+                                                    <xsl:variable name="totalNoVotos" select="inscritos - (partido1 + partido2+ partido3)"/>                         
+                                                    <xsl:variable name="totalVotos" select="($totalNoVotos * 100) div inscritos"/>                           
+                                                    <xsl:value-of select="$totalVotos"/>                             
+                                                    <!--<xsl:value-of select="num($totalVotos)"/>-->
+                                                    <!--<xsl:value-of select="format-number($totalVotos, '##0,## %;-##0,## %','european')"/>-->
+                                                </td>                                
+                                            </tr>
+                                        </xsl:for-each>
+                                        <tr>
+                                            <td colspan="2">
+                                                Total
+                                            </td>
+                                            <td >
+                                                <xsl:value-of select="sum(listavotantes/votante/partido1)"/>
+                                            </td>
+                                            <td >
+                                                <xsl:value-of select="sum(listavotantes/votante/partido2)"/>
+                                            </td>
+                                            <td >
+                                                <xsl:value-of select="sum(listavotantes/votante/partido3)"/>
+                                            </td>
+                                            <td >
+                                                <xsl:value-of select="sum(listavotantes/votante/blanco)"/>
+                                            </td>
+                                            <td>
                               
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table> 
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> 
                     
-                </div>
-      
-                <br/>     
-                <div>
-                    <h1>3. Votantes en en la región Caribe </h1>
-                </div>  
-                <table border="1">     
-                    <thead>
-                        <tr>
-                            <th>Departamentos</th>         
-                            <th>Inscritos</th>
-                            <th>Partido 1</th>  
-                            <th>Partido 2</th>
-                            <th>Partido 3</th>
-                            <th>Blanco</th>                    
-                            <th>Abstención</th>                    
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <xsl:for-each select="listavotantes/votante">
-                            <xsl:variable name="regdep" select="departamento/@region"> </xsl:variable> 
-                            <xsl:if test="contains($regdep,'Caribe')"> 
-                                <tr>
-                                    <td>
-                                        <xsl:value-of select="departamento"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="inscritos"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="partido1"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="partido2"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="partido3"/>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="blanco"/>
-                                    </td>
-                                    <td>          
-                                        <xsl:variable name="totalNoVotos" select="inscritos - (partido1 + partido2+ partido3)"/>                         
-                                        <xsl:variable name="totalVotos" select="($totalNoVotos * 100) div inscritos"/>                           
-                                        <xsl:value-of select="$totalVotos"/>                             
-                                    </td>
-                                </tr>
-                            </xsl:if>
-                        </xsl:for-each>
-                    </tbody>
-                </table> 
-                <br/>                 
-                <form >
-                    <label for="regiones">Región: </label>
-                    <select name="regiones" id="regiones">
-                        <!--                        <xsl:for-each-group select="listavotantes/votante" group-by="@region">
-                            <option>
-                                <xsl:value-of select="."/>
-                            </option>
-                        </xsl:for-each-group>-->
-                        <xsl:for-each select="listavotantes/votante">                   
-                            <xsl:variable name="regionesdep" select="departamento/@region"> </xsl:variable>     
-                            <option>
-                                <xsl:value-of select="$regionesdep"/>
-                            </option>    
-                          
-                            <!--                            <xsl:template match="text()" name="split">
-                                <xsl:param name="pText" select="."/>
-                                <xsl:if test="string-length($pText)">
-                                    <xsl:if test="not($pText=.)">
-                                        <br />
-                                    </xsl:if>
-                                    <xsl:value-of select="substring-before(concat($pText,';'),';')"/>
-                                    <xsl:call-template name="split">
-                                        <xsl:with-param name="pText" select="substring-after($pText, ';')"/>
-                                    </xsl:call-template>
-                                </xsl:if>
-                            </xsl:template>-->
-                                                              
-                                                                                                                                  
-                        </xsl:for-each>
-                        <!--                        https://stackoverflow.com/questions/50224452/error-unsupported-xsl-element-http-www-w3-org-1999-xsl-transformfor-each-g
-                        -->                       
-                        <!--                       
-                        -->                                          
-                    </select>
-                    <input type="submit" value="Filtrar" />
-                </form>
-                <div>
-                    <h1>4. Cantidad de letras de los departamentos en la región Andina </h1>
-                </div>
-                <ol>
-                    <xsl:for-each select="listavotantes/votante">
-                        <xsl:variable name="regdep" select="departamento/@region"> </xsl:variable> 
-                        <xsl:if test="contains($regdep,'Andina')"> 
-                            <xsl:variable name="dep" select="translate(departamento, ' ','')"> </xsl:variable>                                            
-                            <li> 
-                                <xsl:copy-of select="concat($dep, '-', string-length($dep))" />
-                            </li>
-                        </xsl:if> 
-                    </xsl:for-each>
-                </ol> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Cantidad de letras de los departamentos en la región Andina
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+          
+                                <ol>
+                                    <xsl:for-each select="listavotantes/votante">
+                                        <xsl:variable name="regdep" select="departamento/@region"> </xsl:variable> 
+                                        <xsl:if test="contains($regdep,'Andina')"> 
+                                            <xsl:variable name="dep" select="translate(departamento, ' ','')"> </xsl:variable>                                            
+                                            <li> 
+                                                <xsl:copy-of select="concat($dep, '-', string-length($dep))" />
+                                            </li>
+                                        </xsl:if> 
+                                    </xsl:for-each>
+                                </ol> 
+                            </div>
+                        </div>
+                    </div>
+                </div>    
             </body>
         </html>
     </xsl:template>
