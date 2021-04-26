@@ -1,0 +1,49 @@
+﻿@using Newtonsoft.Json;
+@using Transito.Utilidades;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transito</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a href="#" class="navbar-brand">
+                <img id="logopagina" src="~/Imagenes/LogoPoli.png" height="50" alt="Politécnico Colombiano Jaime Isaza Cadavid">
+            </a>
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Propietarios", "Index", "Propietarios")</li>
+                    <li>@Html.ActionLink("Vehiculos", "Index", "Vehiculos")</li>
+                    <li>@Html.ActionLink("Infracciones", "Index", "Infracciones")</li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container body-content">
+        @if (TempData["UserMessage"] != null)
+        {
+            <br />
+            var message = JsonConvert.DeserializeObject<MensajeUsr>(TempData["UserMessage"].ToString());
+            <div class="mt-5 alert @message.NombreClaseCss" role="alert">
+                <h4>@message.Titulo</h4>
+                <p style="white-space:pre-wrap">@message.Mensaje</p>
+            </div>
+        }
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/transitojs")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

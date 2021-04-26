@@ -1,0 +1,62 @@
+﻿@model Transito.Models.Infracciones
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center mt-4">
+    <h1>Crear infracción</h1>
+</div>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "crearInfraccion" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_vehiculo, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("id_vehiculo", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.accionador, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("Adiccionador", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.observaciones, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.observaciones, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-3 col-md-3">
+                        @Html.ActionLink("Regresar", "Index", null, new { @class = "col-12 btn btn-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        <input type="submit" value="Crear" class="btn btn-success col-12" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

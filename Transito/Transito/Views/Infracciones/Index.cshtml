@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Transito.Models.Infracciones>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center mt-4">
+    <h2>Infracciones</h2>
+</div>
+<div class="row">
+    <div class="col-2">
+        @Html.ActionLink("Nuevo", "Create", null, new { @class = "col-12 btn btn-success" })
+    </div>
+</div>
+<table id="tbInfracciones" class="table table-hover table-responsive-sm" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehiculos.id_Propietario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.accionador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.observaciones)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vehiculos.id_Propietario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha)
+                </td>
+                <td>
+                    @if (item.accionador == 1)
+                    {
+                        @Html.Display("Agente de transito")
+                    }
+                    else
+                    {
+                        @Html.Display("Cámara")
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.observaciones)
+                </td>
+                <td>
+                    @Html.ActionLink("Modificar", "Edit", new { id = item.id }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

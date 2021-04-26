@@ -1,0 +1,52 @@
+﻿:root {
+    --PoliWarning: #e8c63e;
+    --PoliGreen: #196844;
+}
+body {
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#logopagina {
+    width: 300px;
+}
+
+.navbar {
+    background-color: var(--PoliGreen);
+}
+
+    .navbar .a {
+        color: white !important;
+    }
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff
+}
+
+    .navbar-inverse .navbar-nav > li > a:hover {
+        color: var(--PoliWarning);
+    }
+
+ul.navbar-nav {
+    margin-top: 12px;
+}
+
+.table {
+    margin-top: 15px
+}
+
+    .table > thead {
+        background-color: var(--PoliWarning);
+    }
+
+.justify-content-center {
+    justify-content: center !important;
+}
+.row {
+    display: flex;
+}
