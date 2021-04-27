@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Infracciones">
+    <Position X="6.5" Y="4.5" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="Transito.Controllers.HomeController">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transito.Controllers.InfraccionesController">
+    <Position X="11.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\InfraccionesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transito.Controllers.PropietariosController">
+    <Position X="8.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PropietariosController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transito.Controllers.VehiculosController">
+    <Position X="8.75" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\VehiculosController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transito.Models.Infracciones">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAQAAAACAAAQAAAAAAAAAAAQAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Infracciones.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transito.Models.Propietarios">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAIACAAAAAAAAAAAAAAAQAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Propietarios.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transito.Models.TransitoModel">
+    <Position X="2.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAEAAAAAQAAIAAAAAAAAA=</HashCode>
+      <FileName>Models\TransitoModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transito.Models.Vehiculos">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABQAAIQAQAAAAAAAAAAAAAAAAAABAAIAAAAAAAAA=</HashCode>
+      <FileName>Models\Vehiculos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transito.Utilidades.Logs">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAACAAAABAA=</HashCode>
+      <FileName>Utilidades\Logs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transito.Utilidades.MensajeUsr">
+    <Position X="4.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAABA=</HashCode>
+      <FileName>Utilidades\MensajeUsr.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

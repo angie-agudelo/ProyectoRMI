@@ -17,7 +17,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Propietarios.nombre)
+                @Html.DisplayNameFor(model => model.placa)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.marca)
@@ -28,29 +28,35 @@
             <th>
                 @Html.DisplayNameFor(model => model.tipo)
             </th>
+            <th>
+                @Html.Label("Propietario")
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Propietarios.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.marca)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.fecha)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tipo)
-                </td>
-                <td>
-                    @Html.ActionLink("Modificar", "Edit", new { id = item.placa }, new { @class = "btn btn-primary" })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.placa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Propietarios.nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "Edit", new { id = item.placa }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
         }
     </tbody>
 </table>

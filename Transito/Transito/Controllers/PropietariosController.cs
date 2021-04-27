@@ -37,10 +37,10 @@ namespace Transito.Controllers
             new List<SelectListItem>
             {
                             new SelectListItem { Selected = true, Text = "Seleccione..", Value = ""},
-                            new SelectListItem { Selected = false, Text = "C.C.", Value = "1"},
-                            new SelectListItem { Selected = false, Text = "T.I.", Value = "2"},
-                            new SelectListItem { Selected = false, Text = "PA.", Value = "3"},
-                            new SelectListItem { Selected = false, Text = "C.E.", Value = "4"},
+                            new SelectListItem { Selected = false, Text = "CC", Value = "1"},
+                            new SelectListItem { Selected = false, Text = "TI", Value = "2"},
+                            new SelectListItem { Selected = false, Text = "PA", Value = "3"},
+                            new SelectListItem { Selected = false, Text = "CE", Value = "4"},
             }, "Value", "Text");
 
             ViewBag.tipo_Id = TipoIdentificacion;
@@ -80,12 +80,11 @@ namespace Transito.Controllers
             SelectList TipoIdentificacion = new SelectList(
            new List<SelectListItem>
            {
-                            new SelectListItem { Selected = false, Text = "Seleccione..", Value = "-1"},
-                            new SelectListItem { Selected = false, Text = "C.C.", Value = "1"},
-                            new SelectListItem { Selected = false, Text = "T.I.", Value = "2"},
-                            new SelectListItem { Selected = false, Text = "PA.", Value = "3"},
-                            new SelectListItem { Selected = false, Text = "C.E.", Value = "4"},
-           }, "Value", "Text", propietarios.tipo_Id);
+                            new SelectListItem { Selected = false, Text = "Seleccione..", Value = ""},
+                            new SelectListItem { Selected = false, Text = "CC", Value = "1"},
+                            new SelectListItem { Selected = false, Text = "TI", Value = "2"},
+                            new SelectListItem { Selected = false, Text = "PA", Value = "3"},
+                            new SelectListItem { Selected = false, Text = "CE", Value = "4"},           }, "Value", "Text", propietarios.tipo_Id);
             ViewBag.tipo_Id = TipoIdentificacion;
             return View(propietarios);
         }
@@ -107,12 +106,11 @@ namespace Transito.Controllers
                 SelectList TipoIdentificacion = new SelectList(
                new List<SelectListItem>
                {
-                            new SelectListItem { Selected = false, Text = "Seleccione..", Value = "-1"},
-                            new SelectListItem { Selected = false, Text = "C.C.", Value = "1"},
-                            new SelectListItem { Selected = false, Text = "T.I.", Value = "2"},
-                            new SelectListItem { Selected = false, Text = "PA.", Value = "3"},
-                            new SelectListItem { Selected = false, Text = "C.E.", Value = "4"},
-               }, "Value", "Text", propietarios.tipo_Id);
+                            new SelectListItem { Selected = false, Text = "Seleccione..", Value = ""},
+                            new SelectListItem { Selected = false, Text = "CC", Value = "1"},
+                            new SelectListItem { Selected = false, Text = "TI", Value = "2"},
+                            new SelectListItem { Selected = false, Text = "PA", Value = "3"},
+                            new SelectListItem { Selected = false, Text = "CE", Value = "4"},               }, "Value", "Text", propietarios.tipo_Id);
                 ViewBag.tipo_Id = TipoIdentificacion;
                 return View(propietarios);
             }
@@ -149,12 +147,11 @@ namespace Transito.Controllers
             SelectList TipoIdentificacion = new SelectList(
            new List<SelectListItem>
            {
-                            new SelectListItem { Selected = false, Text = "Seleccione..", Value = "-1"},
-                            new SelectListItem { Selected = false, Text = "C.C.", Value = "1"},
-                            new SelectListItem { Selected = false, Text = "T.I.", Value = "2"},
-                            new SelectListItem { Selected = false, Text = "PA.", Value = "3"},
-                            new SelectListItem { Selected = false, Text = "C.E.", Value = "4"},
-           }, "Value", "Text", propietarios.tipo_Id);
+                            new SelectListItem { Selected = false, Text = "Seleccione..", Value = ""},
+                            new SelectListItem { Selected = false, Text = "CC", Value = "1"},
+                            new SelectListItem { Selected = false, Text = "TI", Value = "2"},
+                            new SelectListItem { Selected = false, Text = "PA", Value = "3"},
+                            new SelectListItem { Selected = false, Text = "CE", Value = "4"},           }, "Value", "Text", propietarios.tipo_Id);
             ViewBag.tipo_Id = TipoIdentificacion;
             return View(propietarios);
         }

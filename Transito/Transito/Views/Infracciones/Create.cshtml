@@ -4,44 +4,45 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="row justify-content-center mt-4">
     <h1>Crear infracción</h1>
 </div>
 <hr />
 <div class="row justify-content-center">
     <div class="col-md-6">
-        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "crearInfraccion" }))
-        {
+        <form action="/Infracciones/Create" id="frmcrearinfraccion" name="crearInfraccion" method="post">
             @Html.AntiForgeryToken()
-
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(model => model.id_vehiculo, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.DropDownList("id_vehiculo", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("id_vehiculo", (SelectList)ViewBag.id_vehiculo, "", new { @class = "form-control", @required = "required" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        <input class="form-control" id="fecha" name="fecha" type="date" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.accionador, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.DropDownList("Adiccionador", null, htmlAttributes: new { @class = "form-control" })
+                        <select class="form-control" id="accionador" name="accionador" required>
+                            <option value=""></option>
+                            <option value=" ">Seleccione..</option>
+                            <option value="1">Agente de transito</option>
+                            <option value="2">Cámara</option>
+                        </select>
                     </div>
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.observaciones, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.observaciones, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.observaciones, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
                     </div>
                 </div>
                 <div class="form-group row">
@@ -49,12 +50,11 @@
                         @Html.ActionLink("Regresar", "Index", null, new { @class = "col-12 btn btn-danger" })
                     </div>
                     <div class="col-md-3">
-                        <input type="submit" value="Crear" class="btn btn-success col-12" />
+                        <input type="button" value="Crear" class="btn btn-success col-12" id="btnCrear" onclick="validateform()" />
                     </div>
                 </div>
             </div>
-        }
-
+        </form>
     </div>
 </div>
 @section Scripts {

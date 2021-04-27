@@ -43,15 +43,6 @@ namespace Transito.Controllers
                 string MensajeUsuario = "Ocurrio un error mostrando la vista de creación. Revise el log de errores.";
                 TempData["UserMessage"] = MensajeUsr.GetMessage(MensajeUsuario, "Infracciones", Enums.TipoDeMensaje.Error, ex);
             }
-            SelectList Adicionadores = new SelectList(
-            new List<SelectListItem>
-            {
-                new SelectListItem { Selected = true, Text = "Seleccione..", Value = "-1"},
-                new SelectListItem { Selected = false, Text = "Agente de transito", Value = "1"},
-                new SelectListItem { Selected = false, Text = "Cámara", Value = "2"},
-            }, "Value", "Text");
-
-            ViewBag.Adiccionador = Adicionadores;
             return View();
         }
 
@@ -96,6 +87,13 @@ namespace Transito.Controllers
                     return HttpNotFound();
                 }
                 ViewBag.id_vehiculo = new SelectList(db.Vehiculos, "placa", "id_Propietario", infracciones.id_vehiculo);
+                List<SelectListItem> Adicionadores =
+                new List<SelectListItem>
+                {
+                new SelectListItem {  Text = "Agente de transito", Value = "1"},
+                new SelectListItem {  Text = "Camara", Value = "2"},
+                };
+                ViewBag.accionador = new SelectList(Adicionadores, "Value", "Text", infracciones.accionador.ToString());
                 return View(infracciones);
             }
             catch (Exception ex)
@@ -115,7 +113,6 @@ namespace Transito.Controllers
         {
             try
             {
-
                 if (ModelState.IsValid)
                 {
                     db.Entry(infracciones).State = EntityState.Modified;
@@ -123,15 +120,23 @@ namespace Transito.Controllers
                     TempData["UserMessage"] = MensajeUsr.GetMessage("Se modifico la infracción " + infracciones.id);
                     return RedirectToAction("Index");
                 }
-                ViewBag.id_vehiculo = new SelectList(db.Vehiculos, "placa", "id_Propietario", infracciones.id_vehiculo);
-                return View(infracciones);
             }
             catch (Exception ex)
             {
                 string MensajeUsuario = "Ocurrio un error al modificar la infraccion " + infracciones.id + ". Revise el log de errores.";
                 TempData["UserMessage"] = MensajeUsr.GetMessage(MensajeUsuario, "Infracciones", Enums.TipoDeMensaje.Error, ex);
-                return View(new Infracciones());
             }
+            ViewBag.id_vehiculo = new SelectList(db.Vehiculos, "placa", "id_Propietario", infracciones.id_vehiculo);
+            SelectList Adicionadores = new SelectList(
+            new List<SelectListItem>
+            {
+                new SelectListItem { Selected = false, Text = "Seleccione", Value = ""},
+                new SelectListItem { Selected = false, Text = "Agente de transito", Value = "1"},
+                new SelectListItem { Selected = false, Text = "Camara", Value = "2"},
+            }, "Value", "Text", infracciones.accionador.ToString());
+
+            ViewBag.accionador = Adicionadores;
+            return View(infracciones);
         }
 
     }

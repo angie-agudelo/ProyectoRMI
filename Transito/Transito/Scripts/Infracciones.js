@@ -1,40 +1,18 @@
-﻿$(document).ready(function () {
-    $("#crearInfraccion").validate({
-        rules: {
-            id_vehiculo: {
-                required: true
-            },
-            accionador: {
-                required: true
-            },
-            fecha: {
-                required: true,
-                date: true
-            },
-            observaciones: {
-                required: true,
-                maxlength: 100
-            },
-            //email: {
-            //    required: true,
-            //    email: true
-            //},
-        },
-        messages: {
-            id_vehiculo: {
-                required: "El vehículo es requerido"
-            },
-            accionador: {
-                required: "El accionador es requerido"
-            },
-            fecha: {
-                required: "La Fecha infracción es requerida",
-                date: "Solo fecha"
-            },
-            observaciones: {
-                required: "El máximo de sdsadas permitido es 100",
-                maxlength: "El máximo de caracteres permitido es 100"
-            }
-        }
-    });
-});
+﻿function validateform() {
+    var id_vehiculo = document.crearInfraccion.id_vehiculo.value;
+    var fecha = document.crearInfraccion.fecha.value;
+    var accionador = document.crearInfraccion.accionador.value;
+
+    if (id_vehiculo == null || id_vehiculo == "") {
+        alert("El vehículo es requerido");
+        return false;
+    } else if (fecha == null || fecha == "") {
+        alert("La Fecha infracción es requerida");
+        return false;
+    }
+    else if (accionador == null || accionador == "") {
+        alert("El accionador es requerido");
+        return false;
+    }
+    document.getElementById("frmcrearinfraccion").submit();
+}

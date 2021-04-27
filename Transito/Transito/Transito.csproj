@@ -155,6 +155,8 @@
     <Content Include="Imagenes\LogoPoli.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassApp.cd" />
+    <Content Include="DiagramaClases.cd" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Infracciones.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

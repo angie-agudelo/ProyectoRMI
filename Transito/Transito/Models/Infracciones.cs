@@ -21,7 +21,8 @@ namespace Transito.Models
         [Display(Name = "Fecha infracción")]
         [DataType(DataType.Date, ErrorMessage = "Solo fecha")]
         public DateTime fecha { get; set; }
-        
+
+        [Display(Name = "Accionador")]
         public int accionador { get; set; }
 
         [StringLength(100)]

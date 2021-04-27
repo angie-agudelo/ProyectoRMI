@@ -20,6 +20,9 @@
                 @Html.DisplayNameFor(model => model.tipo_Id)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.nombre)
             </th>
             <th>
@@ -31,35 +34,38 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @if (item.tipo_Id == 1)
-                    {
-                        @Html.Label("CC")
-                    }
-                    else if (item.tipo_Id == 2)
-                    {
-                        @Html.Label("TI")
-                    }
-                    else if (item.tipo_Id == 3)
-                    {
-                        @Html.Label("PA")
-                    }
-                    else
-                    {
-                        @Html.Label("CE")
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.direccion)
-                </td>
-                <td>
-                    @Html.ActionLink("Modificar", "Edit", new { id = item.id }, new { @class = "btn btn-primary" })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @if (item.tipo_Id == 1)
+                {
+                    @Html.Label("CC")
+                }
+                else if (item.tipo_Id == 2)
+                {
+                    @Html.Label("TI")
+                }
+                else if (item.tipo_Id == 3)
+                {
+                    @Html.Label("PA")
+                }
+                else
+                {
+                    @Html.Label("CE")
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "Edit", new { id = item.id }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
         }
     </tbody>
 </table>

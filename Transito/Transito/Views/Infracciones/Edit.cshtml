@@ -20,9 +20,9 @@
                 @Html.HiddenFor(model => model.id)
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.id_vehiculo, "id_vehiculo", htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.id_vehiculo, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.DropDownList("id_vehiculo", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("id_vehiculo", null, htmlAttributes: new { @class = "form-control", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.id_vehiculo, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.Label(Model.fecha.ToShortDateString(), new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.accionador, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.accionador, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DropDownList("accionador", ViewBag.accionador as SelectList, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.accionador, "", new { @class = "text-danger" })
                     </div>
                 </div>
