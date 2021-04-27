@@ -1,7 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Comment CommentText="Infracciones">
-    <Position X="6.5" Y="4.5" Height="0.75" Width="1.7" />
+  <Comment CommentText="Propietarios&#xD;&#xA;- Index&#xD;&#xA;- Create&#xD;&#xA;- Edit">
+    <Position X="6.594" Y="1.875" Height="0.859" Width="1.124" />
+  </Comment>
+  <Comment CommentText="Vehiculos&#xD;&#xA;- Index&#xD;&#xA;- Create&#xD;&#xA;- Edit">
+    <Position X="6.552" Y="2.965" Height="0.877" Width="1.124" />
+  </Comment>
+  <Comment CommentText="Infracciones&#xD;&#xA;- Index&#xD;&#xA;- Create&#xD;&#xA;- Edit">
+    <Position X="6.606" Y="4.12" Height="0.877" Width="1.124" />
+  </Comment>
+  <Comment CommentText="Home&#xD;&#xA;- Index">
+    <Position X="6.586" Y="5.216" Height="0.877" Width="1.124" />
+  </Comment>
+  <Comment CommentText="Shared&#xD;&#xA;_Layout">
+    <Position X="6.469" Y="1.146" Height="0.443" Width="1.114" />
   </Comment>
   <Class Name="Transito.Controllers.HomeController">
     <Position X="11.5" Y="2.75" Width="1.5" />
